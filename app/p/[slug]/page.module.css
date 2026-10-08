@@ -1,15 +1,31 @@
+/* Image left (sized so the whole pin fits the viewport), title and notes right.
+   On phones the title comes first, then the image, then the notes and button. */
 .layout {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: clamp(2.5rem, 6vw, 6rem);
+  grid-template-columns: auto minmax(0, 1fr);
+  grid-template-areas:
+    "media intro"
+    "media copy";
+  grid-template-rows: auto 1fr;
+  column-gap: clamp(2.5rem, 6vw, 6rem);
   align-items: start;
   padding-block: clamp(2.5rem, 2rem + 3vw, 5rem) var(--section);
 }
 
+.intro {
+  grid-area: intro;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: clamp(0rem, 2vw, 2rem);
+}
+
 .media {
+  grid-area: media;
   margin: 0;
   position: sticky;
   top: 2rem;
+  width: min(36rem, calc((100svh - 6rem) * 2 / 3), 46vw);
   overflow: hidden;
   border-radius: var(--radius);
   background: var(--cream-deep);
@@ -21,10 +37,10 @@
 }
 
 .copy {
+  grid-area: copy;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding-top: clamp(0rem, 2vw, 2rem);
 }
 
 .category {
@@ -182,10 +198,26 @@
 @media (max-width: 900px) {
   .layout {
     grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "intro"
+      "media"
+      "copy";
+    grid-template-rows: none;
+    row-gap: 1.75rem;
+    padding-top: clamp(1.75rem, 1rem + 3vw, 3rem);
+  }
+
+  .intro {
+    padding-top: 0;
   }
 
   .media {
     position: static;
-    max-width: 34rem;
+    width: 100%;
+    max-width: 30rem;
+  }
+
+  .description {
+    margin-top: 0;
   }
 }

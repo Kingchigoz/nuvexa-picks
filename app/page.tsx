@@ -49,8 +49,8 @@ export default function Home() {
               Discoveries <em>worth saving.</em>
             </h1>
             <p className={styles.heroLead}>
-              Products worth checking out, found and curated with care: useful finds, gifts and
-              everyday inspiration, each with a short note on why we picked it.
+              Useful finds, gifts and everyday inspiration, curated with care and each with a short
+              note on why we picked it.
             </p>
             <div className={styles.heroActions}>
               {site.pinterestUrl ? (
@@ -99,8 +99,8 @@ export default function Home() {
 
       {recent.length > 0 && (
         <section id="recent" className={styles.section} aria-labelledby="recent-title">
-          <div className="container">
-            <div className={styles.sectionHead}>
+          <div className={`container ${styles.recentGrid}`}>
+            <div className={`${styles.sectionHead} ${styles.recentHead}`}>
               <h2 id="recent-title" className={styles.sectionTitle}>
                 Recently <em>picked.</em>
               </h2>

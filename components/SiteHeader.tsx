@@ -1,11 +1,7 @@
 import Link from "next/link";
 import { Wordmark } from "./Logo";
-
-const nav = [
-  { href: "/#discover", label: "Categories" },
-  { href: "/gifts", label: "Gifts" },
-  { href: "/#about", label: "About" },
-];
+import { SiteNav } from "./SiteNav";
+import { categories } from "@/lib/categories";
 
 export function SiteHeader() {
   return (
@@ -14,17 +10,7 @@ export function SiteHeader() {
         <Link href="/" className="site-header__brand" aria-label="Nuvexa Picks home">
           <Wordmark />
         </Link>
-        <nav aria-label="Primary">
-          <ul className="site-nav">
-            {nav.map((item) => (
-              <li key={item.href}>
-                <Link href={item.href} className="site-nav__link">
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
+        <SiteNav categories={categories.map(({ slug, name }) => ({ slug, name }))} />
       </div>
     </header>
   );

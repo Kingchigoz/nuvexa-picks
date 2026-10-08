@@ -107,14 +107,16 @@ export function getProducts(): Product[] {
 }
 
 /**
- * Recently Picked is an editorial selection, not the catalog: the newest few approved products.
- * Older products rotate out of it automatically as new ones are published, but are never removed;
- * they stay on their category page and their own product page.
+ * Recently Picked is an editorial selection, not the catalog: the newest approved products, at most
+ * six, shown in complete rows of three (3 or 6). Older products rotate out automatically as new ones
+ * are published but are never removed; they stay on their category page and their own product page.
  */
-export const RECENT_PICKS_LIMIT = 4;
+export const RECENT_PICKS_LIMIT = 6;
 
 export function getRecentProducts(limit = RECENT_PICKS_LIMIT) {
-  return getProducts().slice(0, limit);
+  const all = getProducts();
+  const count = all.length < 3 ? all.length : Math.min(limit, all.length - (all.length % 3));
+  return all.slice(0, count);
 }
 
 export function getProduct(slug: string) {

@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { getCategory } from "@/lib/categories";
 import type { Product } from "@/lib/catalog";
+import { keepHyphenated } from "@/lib/text";
 import styles from "./ProductCard.module.css";
 
 type Props = { product: Product; showCategory?: boolean; preload?: boolean };
@@ -18,14 +19,14 @@ export function ProductCard({ product, showCategory = true, preload = false }: P
             alt={product.image.alt}
             width={product.image.width}
             height={product.image.height}
-            sizes="(max-width: 720px) 50vw, (max-width: 1100px) 33vw, 25vw"
+            sizes="(max-width: 720px) 50vw, (max-width: 1100px) 33vw, 22vw"
             preload={preload}
           />
         </span>
         <span className={styles.body}>
           {showCategory && category && <span className={styles.category}>{category.name}</span>}
-          <span className={styles.name}>{product.name}</span>
-          <span className={styles.line}>{product.cardLine}</span>
+          <span className={styles.name}>{keepHyphenated(product.name)}</span>
+          <span className={styles.line}>{keepHyphenated(product.cardLine)}</span>
         </span>
       </Link>
     </article>

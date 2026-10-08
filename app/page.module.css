@@ -199,6 +199,21 @@
   text-wrap: pretty;
 }
 
+/* Recently Picked: the heading holds the left column while the picks sit beside it, so cards stay
+   a comfortable size on laptops and the section reads as one group on wide screens. */
+.recentGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 17rem) minmax(0, 1fr);
+  gap: clamp(2.5rem, 5vw, 5rem);
+  align-items: start;
+}
+
+.recentHead {
+  position: sticky;
+  top: 2rem;
+  margin-bottom: 0;
+}
+
 /* Categories: two columns of icon + copy, no row rules */
 .categories {
   list-style: none;
@@ -363,7 +378,7 @@
   text-decoration: underline;
   text-decoration-color: rgb(244 238 226 / 0.4);
   text-underline-offset: 0.35em;
-  padding-block: 0.4rem;
+  padding-block: 0.7rem;
 }
 
 .lightLink:hover {
@@ -393,8 +408,17 @@
     display: none;
   }
 
-  .approachGrid {
+  .board {
+    max-width: 32rem;
+  }
+
+  .approachGrid,
+  .recentGrid {
     grid-template-columns: 1fr;
+  }
+
+  .recentHead {
+    position: static;
   }
 
   .approachGrid .sectionTitle {

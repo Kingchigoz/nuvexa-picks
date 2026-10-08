@@ -13,6 +13,7 @@ import {
   marketLabel,
 } from "@/lib/catalog";
 import { amazonDisclosure, site } from "@/lib/site";
+import { keepHyphenated } from "@/lib/text";
 import styles from "./page.module.css";
 
 export function generateStaticParams() {
@@ -53,6 +54,14 @@ export default async function ProductPage({ params }: PageProps<"/p/[slug]">) {
   return (
     <>
       <article className={`container ${styles.layout}`}>
+
+        <header className={styles.intro}>
+          <Link className={styles.category} href={`/${category.slug}`}>
+            {category.name}
+          </Link>
+          <h1 className={styles.title}>{keepHyphenated(product.name)}</h1>
+        </header>
+
         <figure className={styles.media}>
           <Image
             className={styles.image}
@@ -66,10 +75,6 @@ export default async function ProductPage({ params }: PageProps<"/p/[slug]">) {
         </figure>
 
         <div className={styles.copy}>
-          <Link className={styles.category} href={`/${category.slug}`}>
-            {category.name}
-          </Link>
-          <h1 className={styles.title}>{product.name}</h1>
           <p className={styles.description}>{product.description}</p>
 
           <section className={styles.why} aria-labelledby="why-title">
