@@ -5,9 +5,17 @@ import type { Product } from "@/lib/catalog";
 import { keepHyphenated } from "@/lib/text";
 import styles from "./ProductCard.module.css";
 
-type Props = { product: Product; showCategory?: boolean; preload?: boolean };
+type Props = {
+  product: Product;
+  showCategory?: boolean;
+  preload?: boolean;
+  /** Near the top of the page: load without waiting for scroll. */
+  eager?: boolean;
+  /** Spans the full row on phones (the lead pick in a curated row of three). */
+  lead?: boolean;
+};
 
-export function ProductCard({ product, showCategory = true, preload = false }: Props) {
+export function ProductCard({ product, showCategory = true, preload = false, eager = false, lead = false }: Props) {
   const category = getCategory(product.category);
   return (
     <article className={styles.card}>
@@ -19,8 +27,9 @@ export function ProductCard({ product, showCategory = true, preload = false }: P
             alt={product.image.alt}
             width={product.image.width}
             height={product.image.height}
-            sizes="(max-width: 720px) 50vw, (max-width: 1100px) 33vw, 22vw"
+            sizes={`(max-width: 720px) ${lead ? "100vw" : "50vw"}, (max-width: 1100px) 33vw, 22vw`}
             preload={preload}
+            loading={eager ? "eager" : undefined}
           />
         </span>
         <span className={styles.body}>
@@ -46,9 +55,14 @@ export function ProductGrid({
 }) {
   return (
     <ul className={styles.grid} role="list" data-fit={fit ? products.length : undefined}>
-      {products.map((p) => (
+      {products.map((p, i) => (
         <li key={p.slug}>
-          <ProductCard product={p} showCategory={showCategory} />
+          <ProductCard
+            product={p}
+            showCategory={showCategory}
+            eager={fit}
+            lead={fit && products.length === 3 && i === 0}
+          />
         </li>
       ))}
     </ul>
