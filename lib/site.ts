@@ -6,7 +6,7 @@
  *
  *   NEXT_PUBLIC_SITE_URL       e.g. https://nuvexapicks.com  (defaults to the Vercel domain)
  *   NEXT_PUBLIC_PINTEREST_URL  e.g. https://www.pinterest.com/<handle>/  (Pinterest links stay hidden until set)
- *   NEXT_PUBLIC_CONTACT_EMAIL  e.g. hello@nuvexapicks.com  (shown on the Privacy and Disclosure pages)
+ *   NEXT_PUBLIC_CONTACT_EMAIL  overrides the default nuvexap@gmail.com (Privacy and Disclosure pages)
  */
 
 const trimSlash = (url: string) => url.replace(/\/+$/, "");
@@ -18,7 +18,7 @@ export const site = {
     "Thoughtfully curated products, useful finds, gifts and everyday inspiration.",
   url: trimSlash(process.env.NEXT_PUBLIC_SITE_URL || "https://nuvexa-picks.vercel.app"),
   pinterestUrl: process.env.NEXT_PUBLIC_PINTEREST_URL || null,
-  contactEmail: process.env.NEXT_PUBLIC_CONTACT_EMAIL || null,
+  contactEmail: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "nuvexap@gmail.com",
   founded: 2026,
   /** Effective / last-updated date for the legal pages (ISO). */
   legalUpdated: "2026-10-07",

@@ -21,7 +21,7 @@ environment variables (set them in Vercel → Project → Settings → Environme
 | --- | --- | --- |
 | `NEXT_PUBLIC_SITE_URL` | `https://nuvexa-picks.vercel.app` | Canonical URLs, Open Graph, sitemap. Set to `https://nuvexapicks.com` after connecting a custom domain. |
 | `NEXT_PUBLIC_PINTEREST_URL` | *(unset)* | Shows the "Explore our Pinterest" button and footer link. Hidden until set. |
-| `NEXT_PUBLIC_CONTACT_EMAIL` | *(unset)* | Contact address on the Privacy and Disclosure pages. |
+| `NEXT_PUBLIC_CONTACT_EMAIL` | `nuvexap@gmail.com` | Contact address on the Privacy and Disclosure pages. |
 
 See [`.env.example`](.env.example).
 
