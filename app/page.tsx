@@ -3,7 +3,7 @@ import { ArrowDownIcon, ArrowRightIcon, ArrowUpRightIcon } from "@phosphor-icons
 import { CategoryTile, type CategoryKind } from "@/components/CategoryTile";
 import { ProductGrid } from "@/components/ProductCard";
 import { categories } from "@/lib/categories";
-import { getProducts } from "@/lib/catalog";
+import { getRecentProducts } from "@/lib/catalog";
 import { amazonDisclosure, commissionDisclosure, site } from "@/lib/site";
 import styles from "./page.module.css";
 
@@ -39,7 +39,7 @@ const principles = [
 ];
 
 export default function Home() {
-  const recent = getProducts().slice(0, 8);
+  const recent = getRecentProducts();
   return (
     <>
       <section className={styles.hero} aria-labelledby="hero-title">
@@ -65,20 +65,15 @@ export default function Home() {
                     <ArrowUpRightIcon className={styles.buttonIcon} weight="light" aria-hidden="true" />
                     <span className="visually-hidden"> (opens in a new tab)</span>
                   </a>
-                  <Link className={styles.textLink} href="#discover">
-                    What we curate
+                  <Link className={styles.textLink} href={recent.length ? "#recent" : "#discover"}>
+                    {recent.length ? "See recent picks" : "See what we curate"}
                   </Link>
                 </>
               ) : (
-                <>
-                  <Link className={styles.button} href={recent.length ? "#recent" : "#discover"}>
-                    {recent.length ? "See recent picks" : "See what we curate"}
-                    <ArrowDownIcon className={styles.buttonIcon} weight="light" aria-hidden="true" />
-                  </Link>
-                  <Link className={styles.textLink} href="#about">
-                    Our approach
-                  </Link>
-                </>
+                <Link className={styles.button} href={recent.length ? "#recent" : "#discover"}>
+                  {recent.length ? "See recent picks" : "See what we curate"}
+                  <ArrowDownIcon className={styles.buttonIcon} weight="light" aria-hidden="true" />
+                </Link>
               )}
             </div>
           </div>
@@ -113,7 +108,7 @@ export default function Home() {
                 The latest things we found worth a closer look, each with a short note on why.
               </p>
             </div>
-            <ProductGrid products={recent} />
+            <ProductGrid products={recent} fit />
           </div>
         </section>
       )}

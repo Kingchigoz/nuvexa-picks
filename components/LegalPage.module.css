@@ -35,8 +35,19 @@
   display: grid;
   grid-template-columns: 15rem minmax(0, 42rem);
   gap: clamp(3rem, 6vw, 6rem);
-  border-top: 1px solid var(--line-strong);
+  position: relative;
   padding-top: clamp(2.5rem, 2rem + 2vw, 4rem);
+}
+
+/* The rule sits inside the gutters, aligned with the content above and below it. */
+.layout::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: var(--gutter);
+  right: var(--gutter);
+  height: 1px;
+  background: var(--line-strong);
 }
 
 .noToc {

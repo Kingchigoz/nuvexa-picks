@@ -52,7 +52,7 @@ export default async function CategoryPage({ params }: PageProps<"/[category]">)
       ) : (
         <div className={styles.empty}>
           <p>The first {category.name} picks are being chosen now. Check back soon.</p>
-          <Link className={styles.emptyLink} href="/">
+          <Link className={styles.emptyLink} href="/#recent">
             See recent picks
           </Link>
         </div>

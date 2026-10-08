@@ -15,6 +15,11 @@
   --stone-deep: #8c8070;
   --clay: #c4977a;
   --sage: #a9ad93;
+  /* Fixed tones that do not invert with the color scheme. */
+  --espresso: #2a251e;
+  --tile-ink: #17140f;
+  --band-bg: #17140f;
+  --band-fg: #f4eee2;
 
   --font-display: var(--font-serif), "Iowan Old Style", Georgia, serif;
   --font-body: var(--font-sans), ui-sans-serif, system-ui, -apple-system, sans-serif;
@@ -24,6 +29,23 @@
   --section: clamp(5rem, 4rem + 6vw, 9.5rem);
   --radius: 14px;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Dark scheme: the same warm palette, inverted. Tokens keep their names so every component follows. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --cream: #15120e;
+    --cream-deep: #201c16;
+    --paper: #1c1814;
+    --ink: #f1ebdf;
+    --ink-soft: #d8d0c2;
+    --muted: #b3aa9a;
+    --line: rgb(241 235 223 / 0.14);
+    --line-strong: rgb(241 235 223 / 0.28);
+    --brass-deep: #d1a868;
+    --stone-deep: #6f6658;
+    --band-bg: #0b0907;
+  }
 }
 
 /* ---------- Base ---------- */
@@ -96,7 +118,7 @@ main:focus {
 
 ::selection {
   background: var(--sand);
-  color: var(--ink);
+  color: var(--tile-ink);
 }
 
 .container {
@@ -340,27 +362,28 @@ main:focus {
 
 .tile--sand {
   --tile-bg: var(--sand);
-  --tile-fg: var(--ink);
+  --tile-fg: var(--tile-ink);
 }
 
 .tile--sage {
   --tile-bg: var(--sage);
-  --tile-fg: var(--ink);
+  --tile-fg: var(--tile-ink);
 }
 
 .tile--ink {
-  --tile-bg: var(--ink-soft);
+  --tile-bg: var(--espresso);
   --tile-fg: var(--brass);
+  box-shadow: inset 0 0 0 1px var(--line);
 }
 
 .tile--stone {
   --tile-bg: var(--stone);
-  --tile-fg: var(--ink);
+  --tile-fg: var(--tile-ink);
 }
 
 .tile--clay {
   --tile-bg: var(--clay);
-  --tile-fg: var(--ink);
+  --tile-fg: var(--tile-ink);
 }
 
 .tile--paper {

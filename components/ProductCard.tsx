@@ -36,12 +36,15 @@ export function ProductCard({ product, showCategory = true, preload = false }: P
 export function ProductGrid({
   products,
   showCategory = true,
+  fit = false,
 }: {
   products: Product[];
   showCategory?: boolean;
+  /** Size the columns to the number of products (for short, curated rows), so no row ends in an empty slot. */
+  fit?: boolean;
 }) {
   return (
-    <ul className={styles.grid} role="list">
+    <ul className={styles.grid} role="list" data-fit={fit ? products.length : undefined}>
       {products.map((p) => (
         <li key={p.slug}>
           <ProductCard product={p} showCategory={showCategory} />

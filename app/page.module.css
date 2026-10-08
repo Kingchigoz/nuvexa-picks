@@ -1,6 +1,6 @@
 /* ---------- Hero ---------- */
 .hero {
-  padding-block: clamp(3.5rem, 2rem + 6vw, 7.5rem) clamp(4.5rem, 3rem + 6vw, 8.5rem);
+  padding-block: clamp(3.5rem, 2rem + 4vw, 6rem) clamp(4.5rem, 3rem + 6vw, 8.5rem);
 }
 
 .heroGrid {
@@ -20,7 +20,8 @@
   font-family: var(--font-display);
   font-weight: 400;
   font-size: clamp(3.25rem, 1.7rem + 5vw, 6rem);
-  line-height: 0.96;
+  line-height: 1;
+  padding-bottom: 0.08em;
   letter-spacing: -0.025em;
   font-variation-settings: "opsz" 72;
   text-wrap: balance;
@@ -178,6 +179,7 @@
 }
 
 .sectionTitle {
+  padding-bottom: 0.06em;
   font-family: var(--font-display);
   font-weight: 400;
   font-size: clamp(2.25rem, 1.5rem + 2.8vw, 3.75rem);
@@ -300,16 +302,19 @@
 
 /* ---------- Transparency ---------- */
 .transparency {
-  background: var(--ink);
-  color: var(--cream);
+  background: var(--band-bg);
+  color: var(--band-fg);
   padding-block: clamp(4.5rem, 3.5rem + 4vw, 7.5rem);
 }
 
+/* Stacked, unlike the split Approach section above it: heading, then the disclosure. */
 .transparencyGrid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
-  gap: 2.5rem clamp(3rem, 6vw, 6rem);
-  align-items: start;
+  gap: clamp(1.75rem, 1.5rem + 1vw, 2.5rem);
+}
+
+.transparencyGrid > * {
+  max-width: 48rem;
 }
 
 .transparencyTitle {
@@ -332,8 +337,7 @@
   justify-items: start;
   font-size: 1.125rem;
   color: rgb(244 238 226 / 0.86);
-  max-width: 46ch;
-  padding-top: 0.4rem;
+  max-width: 54ch;
 }
 
 .amazon {
@@ -345,7 +349,7 @@
   font-size: 1.3125rem;
   line-height: 1.4;
   font-variation-settings: "opsz" 24;
-  color: var(--cream);
+  color: var(--band-fg);
 }
 
 .lightLink {
@@ -353,7 +357,7 @@
   align-items: center;
   gap: 0.45rem;
   margin-top: 0.5rem;
-  color: var(--cream);
+  color: var(--band-fg);
   font-size: 0.9375rem;
   font-weight: 500;
   text-decoration: underline;
@@ -363,7 +367,7 @@
 }
 
 .lightLink:hover {
-  text-decoration-color: var(--cream);
+  text-decoration-color: var(--band-fg);
 }
 
 .linkIcon {
@@ -389,8 +393,7 @@
     display: none;
   }
 
-  .approachGrid,
-  .transparencyGrid {
+  .approachGrid {
     grid-template-columns: 1fr;
   }
 

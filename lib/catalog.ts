@@ -106,6 +106,17 @@ export function getProducts(): Product[] {
   return productCache;
 }
 
+/**
+ * Recently Picked is an editorial selection, not the catalog: the newest few approved products.
+ * Older products rotate out of it automatically as new ones are published, but are never removed;
+ * they stay on their category page and their own product page.
+ */
+export const RECENT_PICKS_LIMIT = 4;
+
+export function getRecentProducts(limit = RECENT_PICKS_LIMIT) {
+  return getProducts().slice(0, limit);
+}
+
 export function getProduct(slug: string) {
   return getProducts().find((p) => p.slug === slug);
 }
