@@ -1,14 +1,14 @@
 import Link from "next/link";
-import { Arrow } from "@/components/Arrow";
-import { Plate, type PlateKind } from "@/components/Plate";
+import { ArrowDownIcon, ArrowRightIcon, ArrowUpRightIcon } from "@phosphor-icons/react/ssr";
+import { CategoryTile, type CategoryKind } from "@/components/CategoryTile";
 import { amazonDisclosure, commissionDisclosure, site } from "@/lib/site";
 import styles from "./page.module.css";
 
-const categories: { kind: PlateKind; name: string; text: string }[] = [
+const categories: { kind: CategoryKind; name: string; text: string }[] = [
   {
     kind: "home",
     name: "Home",
-    text: "Quiet upgrades for the rooms you live in — storage, textiles, lighting and the details that make a space feel finished.",
+    text: "Quiet upgrades for the rooms you live in: storage, textiles, lighting and the details that make a space feel finished.",
   },
   {
     kind: "everyday",
@@ -37,7 +37,8 @@ const categories: { kind: PlateKind; name: string; text: string }[] = [
   },
 ];
 
-const board: { kind: PlateKind; label: string; shape: string }[][] = [
+/** The hero "board": three staggered columns of saved pins. */
+const board: { kind: CategoryKind; label: string; shape: string }[][] = [
   [
     { kind: "home", label: "Home", shape: styles.tall },
     { kind: "gifts", label: "Gifts", shape: styles.square },
@@ -47,7 +48,7 @@ const board: { kind: PlateKind; label: string; shape: string }[][] = [
     { kind: "style", label: "Style", shape: styles.tall },
   ],
   [
-    { kind: "everyday", label: "Everyday", shape: styles.tall },
+    { kind: "everyday", label: "Everyday finds", shape: styles.tall },
     { kind: "tech", label: "Tech", shape: styles.portrait },
   ],
 ];
@@ -77,7 +78,7 @@ export default function Home() {
               Discoveries <em>worth saving.</em>
             </h1>
             <p className={styles.heroLead}>
-              Thoughtfully curated products, useful finds, gifts and everyday inspiration — gathered
+              Thoughtfully curated products, useful finds, gifts and everyday inspiration, gathered
               with care and shared for you to save.
             </p>
             <div className={styles.heroActions}>
@@ -90,7 +91,7 @@ export default function Home() {
                     rel="noopener noreferrer"
                   >
                     Explore our Pinterest
-                    <Arrow direction="up-right" className={styles.buttonIcon} />
+                    <ArrowUpRightIcon className={styles.buttonIcon} weight="light" aria-hidden="true" />
                     <span className="visually-hidden"> (opens in a new tab)</span>
                   </a>
                   <Link className={styles.textLink} href="#discover">
@@ -101,7 +102,7 @@ export default function Home() {
                 <>
                   <Link className={styles.button} href="#discover">
                     See what we curate
-                    <Arrow direction="down" className={styles.buttonIcon} />
+                    <ArrowDownIcon className={styles.buttonIcon} weight="light" aria-hidden="true" />
                   </Link>
                   <Link className={styles.textLink} href="#about">
                     Our approach
@@ -115,14 +116,14 @@ export default function Home() {
             {board.map((column, c) => (
               <div key={c} className={styles.boardColumn}>
                 {column.map((pin, i) => (
-                  <div
+                  <figure
                     key={pin.kind}
-                    className={`${styles.pin} ${pin.shape}`}
+                    className={styles.pin}
                     style={{ "--i": c * 2 + i } as React.CSSProperties}
                   >
-                    <Plate kind={pin.kind} className={styles.pinArt} />
-                    <span className={styles.pinLabel}>{pin.label}</span>
-                  </div>
+                    <CategoryTile kind={pin.kind} className={`${styles.pinTile} ${pin.shape}`} />
+                    <figcaption className={styles.pinCaption}>{pin.label}</figcaption>
+                  </figure>
                 ))}
               </div>
             ))}
@@ -137,20 +138,22 @@ export default function Home() {
               A considered edit of <em>everyday things.</em>
             </h2>
             <p className={styles.sectionIntro}>
-              Nuvexa Picks covers a deliberately broad range — from the home to the gift list — held
+              Nuvexa Picks covers a deliberately broad range, from the home to the gift list, held
               together by one standard: would we save it ourselves?
             </p>
           </div>
 
-          <ol className={styles.index} role="list">
+          <ul className={styles.categories} role="list">
             {categories.map((cat) => (
-              <li key={cat.kind} className={styles.indexRow}>
-                <h3 className={styles.indexName}>{cat.name}</h3>
-                <p className={styles.indexText}>{cat.text}</p>
-                <Plate kind={cat.kind} className={styles.indexArt} />
+              <li key={cat.kind} className={styles.category}>
+                <CategoryTile kind={cat.kind} className={styles.categoryTile} />
+                <div>
+                  <h3 className={styles.categoryName}>{cat.name}</h3>
+                  <p className={styles.categoryText}>{cat.text}</p>
+                </div>
               </li>
             ))}
-          </ol>
+          </ul>
         </div>
       </section>
 
@@ -165,16 +168,16 @@ export default function Home() {
             <p className={styles.approachLead}>
               Nuvexa Picks is an independent product-discovery brand. We research products and ideas
               across home, style, beauty, tech and gifting, then share the ones we think are worth a
-              closer look — as Pins you can save and come back to.
+              closer look as Pins you can save and come back to.
             </p>
-            <ol className={styles.principles} role="list">
+            <ul className={styles.principles} role="list">
               {principles.map((p) => (
                 <li key={p.title} className={styles.principle}>
                   <h3 className={styles.principleTitle}>{p.title}</h3>
                   <p className={styles.principleText}>{p.text}</p>
                 </li>
               ))}
-            </ol>
+            </ul>
           </div>
         </div>
       </section>
@@ -183,14 +186,15 @@ export default function Home() {
         <div className={`container ${styles.transparencyGrid}`}>
           <div>
             <h2 id="transparency-title" className={styles.transparencyTitle}>
-              How Nuvexa Picks <em>is supported.</em>
+              How Nuvexa&nbsp;Picks <em>is supported.</em>
             </h2>
           </div>
           <div className={styles.transparencyBody}>
             <p>Some links we share are affiliate links. {commissionDisclosure}</p>
             <p className={styles.amazon}>{amazonDisclosure}</p>
             <Link className={styles.lightLink} href="/disclosure">
-              Read our affiliate disclosure <Arrow direction="right" className={styles.linkIcon} />
+              Read our affiliate disclosure
+              <ArrowRightIcon className={styles.linkIcon} weight="light" aria-hidden="true" />
             </Link>
           </div>
         </div>

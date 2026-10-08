@@ -76,7 +76,7 @@ export default function PrivacyPage() {
         you to provide personal information to use it.
       </p>
       <p>
-        If you choose to contact us directly, we receive the information you send — typically your
+        If you choose to contact us directly, we receive the information you send, typically your
         name, your email address or social media handle, and the contents of your message. We use it
         only to read and respond to you.
       </p>
@@ -114,8 +114,8 @@ export default function PrivacyPage() {
       </p>
       <p>
         When you follow a link, you leave the Site. The retailer or platform you visit may use
-        cookies or similar technologies — for example, to recognize that you arrived through an
-        affiliate link — and its own privacy policy governs any information it collects, including
+        cookies or similar technologies (for example, to recognize that you arrived through an
+        affiliate link), and its own privacy policy governs any information it collects, including
         anything you provide when making a purchase.
       </p>
       <p>
@@ -126,7 +126,7 @@ export default function PrivacyPage() {
       <h2 id="pinterest">Pinterest and the Pinterest API</h2>
       <p>
         Nuvexa Picks uses Pinterest, including Pinterest’s developer tools and API, to create, publish
-        and manage content on its own Pinterest account — for example, creating Pins, organizing
+        and manage content on its own Pinterest account, for example by creating Pins, organizing
         boards and reviewing how our own content performs.
       </p>
       <ul>
@@ -141,7 +141,7 @@ export default function PrivacyPage() {
         <li>We do not sell, rent or share Pinterest data with third parties.</li>
       </ul>
       <p>
-        If you interact with our Pins on Pinterest — for example, by saving or commenting on them —
+        If you interact with our Pins on Pinterest (for example, by saving or commenting on them),
         that activity takes place on Pinterest and is governed by{" "}
         <a href="https://policy.pinterest.com/privacy-policy" rel="noopener noreferrer">
           Pinterest’s Privacy Policy
@@ -178,8 +178,8 @@ export default function PrivacyPage() {
 
       <h2 id="rights">Your choices and rights</h2>
       <p>
-        Depending on where you live — for example in Canada, the United Kingdom, the European Union or
-        certain U.S. states — you may have the right to request access to, correction of, or deletion
+        Depending on where you live (for example in Canada, the United Kingdom, the European Union or
+        certain U.S. states), you may have the right to request access to, correction of, or deletion
         of personal information we hold about you, and to object to or restrict certain processing.
         Because we collect very little, in most cases we will simply confirm that we hold no
         information about you. You may also have the right to complain to your local data protection

@@ -31,7 +31,7 @@ export default function DisclosurePage() {
 
       <h2>Affiliate links</h2>
       <p>
-        Some of the links we share — on Pinterest and on this website — are affiliate links. If you
+        Some of the links we share on Pinterest and on this website are affiliate links. If you
         follow one and make a qualifying purchase, Nuvexa Picks may receive a small commission from
         the retailer.
       </p>

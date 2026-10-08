@@ -11,7 +11,7 @@ export function SiteHeader() {
   return (
     <header className="site-header">
       <div className="container site-header__inner">
-        <Link href="/" className="site-header__brand" aria-label="Nuvexa Picks — home">
+        <Link href="/" className="site-header__brand" aria-label="Nuvexa Picks home">
           <Wordmark />
         </Link>
         <nav aria-label="Primary">

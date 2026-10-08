@@ -323,3 +323,47 @@ main:focus {
 .not-found p {
   color: var(--muted);
 }
+
+/* ---------- Category tiles ---------- */
+.tile {
+  display: grid;
+  place-items: center;
+  background: var(--tile-bg);
+  color: var(--tile-fg);
+}
+
+.tile__icon {
+  width: 50%;
+  height: auto;
+  max-width: 7.5rem;
+}
+
+.tile--sand {
+  --tile-bg: var(--sand);
+  --tile-fg: var(--ink);
+}
+
+.tile--sage {
+  --tile-bg: var(--sage);
+  --tile-fg: var(--ink);
+}
+
+.tile--ink {
+  --tile-bg: var(--ink-soft);
+  --tile-fg: var(--brass);
+}
+
+.tile--stone {
+  --tile-bg: var(--stone);
+  --tile-fg: var(--ink);
+}
+
+.tile--clay {
+  --tile-bg: var(--clay);
+  --tile-fg: var(--ink);
+}
+
+.tile--paper {
+  --tile-bg: var(--cream-deep);
+  --tile-fg: var(--ink);
+}
