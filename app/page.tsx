@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Arrow } from "@/components/Arrow";
 import { Plate, type PlateKind } from "@/components/Plate";
 import { amazonDisclosure, commissionDisclosure, site } from "@/lib/site";
 import styles from "./page.module.css";
@@ -72,7 +73,6 @@ export default function Home() {
       <section className={styles.hero} aria-labelledby="hero-title">
         <div className={`container ${styles.heroGrid}`}>
           <div className={styles.heroCopy}>
-            <p className="eyebrow">Curated product discovery</p>
             <h1 id="hero-title" className={styles.heroTitle}>
               Discoveries <em>worth saving.</em>
             </h1>
@@ -90,7 +90,7 @@ export default function Home() {
                     rel="noopener noreferrer"
                   >
                     Explore our Pinterest
-                    <span aria-hidden="true">↗</span>
+                    <Arrow direction="up-right" className={styles.buttonIcon} />
                     <span className="visually-hidden"> (opens in a new tab)</span>
                   </a>
                   <Link className={styles.textLink} href="#discover">
@@ -101,7 +101,7 @@ export default function Home() {
                 <>
                   <Link className={styles.button} href="#discover">
                     See what we curate
-                    <span aria-hidden="true">↓</span>
+                    <Arrow direction="down" className={styles.buttonIcon} />
                   </Link>
                   <Link className={styles.textLink} href="#about">
                     Our approach
@@ -133,7 +133,6 @@ export default function Home() {
       <section id="discover" className={styles.section} aria-labelledby="discover-title">
         <div className="container">
           <div className={styles.sectionHead}>
-            <p className="eyebrow">What we curate</p>
             <h2 id="discover-title" className={styles.sectionTitle}>
               A considered edit of <em>everyday things.</em>
             </h2>
@@ -144,11 +143,8 @@ export default function Home() {
           </div>
 
           <ol className={styles.index} role="list">
-            {categories.map((cat, i) => (
+            {categories.map((cat) => (
               <li key={cat.kind} className={styles.indexRow}>
-                <span className={styles.indexNum} aria-hidden="true">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
                 <h3 className={styles.indexName}>{cat.name}</h3>
                 <p className={styles.indexText}>{cat.text}</p>
                 <Plate kind={cat.kind} className={styles.indexArt} />
@@ -161,7 +157,6 @@ export default function Home() {
       <section id="about" className={`${styles.section} ${styles.approach}`} aria-labelledby="about-title">
         <div className={`container ${styles.approachGrid}`}>
           <div>
-            <p className="eyebrow">Our approach</p>
             <h2 id="about-title" className={styles.sectionTitle}>
               Fewer things, <em>chosen with care.</em>
             </h2>
@@ -173,11 +168,8 @@ export default function Home() {
               closer look — as Pins you can save and come back to.
             </p>
             <ol className={styles.principles} role="list">
-              {principles.map((p, i) => (
+              {principles.map((p) => (
                 <li key={p.title} className={styles.principle}>
-                  <span className={styles.principleNum} aria-hidden="true">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
                   <h3 className={styles.principleTitle}>{p.title}</h3>
                   <p className={styles.principleText}>{p.text}</p>
                 </li>
@@ -190,7 +182,6 @@ export default function Home() {
       <section className={styles.transparency} aria-labelledby="transparency-title">
         <div className={`container ${styles.transparencyGrid}`}>
           <div>
-            <p className={`eyebrow ${styles.eyebrowOnDark}`}>Transparency</p>
             <h2 id="transparency-title" className={styles.transparencyTitle}>
               How Nuvexa Picks <em>is supported.</em>
             </h2>
@@ -199,7 +190,7 @@ export default function Home() {
             <p>Some links we share are affiliate links. {commissionDisclosure}</p>
             <p className={styles.amazon}>{amazonDisclosure}</p>
             <Link className={styles.lightLink} href="/disclosure">
-              Read our affiliate disclosure <span aria-hidden="true">→</span>
+              Read our affiliate disclosure <Arrow direction="right" className={styles.linkIcon} />
             </Link>
           </div>
         </div>

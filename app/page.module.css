@@ -17,10 +17,9 @@
 }
 
 .heroTitle {
-  margin-top: 1.75rem;
   font-family: var(--font-display);
   font-weight: 400;
-  font-size: clamp(3.25rem, 1.6rem + 5.6vw, 6.75rem);
+  font-size: clamp(3.25rem, 1.7rem + 5vw, 6rem);
   line-height: 0.96;
   letter-spacing: -0.025em;
   font-variation-settings: "opsz" 72;
@@ -70,7 +69,7 @@
     transform 0.3s var(--ease);
 }
 
-.button span[aria-hidden] {
+.buttonIcon {
   transition: transform 0.3s var(--ease);
 }
 
@@ -78,7 +77,7 @@
   background: var(--ink-soft);
 }
 
-.button:hover span[aria-hidden] {
+.button:hover .buttonIcon {
   transform: translateY(2px);
 }
 
@@ -181,16 +180,10 @@
 .sectionHead {
   display: grid;
   grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
-  grid-template-areas:
-    "eyebrow eyebrow"
-    "title intro";
+  grid-template-areas: "title intro";
   align-items: end;
   gap: 1.5rem clamp(3rem, 6vw, 6rem);
   margin-bottom: clamp(3rem, 2rem + 3vw, 5rem);
-}
-
-.sectionHead > :global(.eyebrow) {
-  grid-area: eyebrow;
 }
 
 .sectionTitle {
@@ -225,19 +218,11 @@
 
 .indexRow {
   display: grid;
-  grid-template-columns: 4.5rem minmax(0, 1fr) minmax(0, 1.25fr) 5rem;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr) 5rem;
   align-items: center;
   gap: 1.5rem clamp(1.5rem, 3vw, 3rem);
   padding-block: clamp(1.5rem, 1rem + 1.2vw, 2.25rem);
   border-bottom: 1px solid var(--line);
-}
-
-.indexNum {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 1.125rem;
-  color: var(--brass-deep);
-  font-variant-numeric: lining-nums;
 }
 
 .indexName {
@@ -274,7 +259,8 @@
 }
 
 .approachGrid .sectionTitle {
-  margin-top: 1.5rem;
+  position: sticky;
+  top: 2rem;
 }
 
 .approachLead {
@@ -295,16 +281,10 @@
 
 .principle {
   display: grid;
-  grid-template-columns: 3rem minmax(0, 13rem) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 12rem) minmax(0, 1fr);
   gap: 0.25rem 1.5rem;
   padding-block: 1.4rem;
   border-top: 1px solid var(--line-strong);
-}
-
-.principleNum {
-  font-family: var(--font-display);
-  font-style: italic;
-  color: var(--brass-deep);
 }
 
 .principleTitle {
@@ -332,12 +312,7 @@
   align-items: start;
 }
 
-.eyebrowOnDark {
-  color: rgb(244 238 226 / 0.72);
-}
-
 .transparencyTitle {
-  margin-top: 1.5rem;
   font-family: var(--font-display);
   font-weight: 400;
   font-size: clamp(2rem, 1.4rem + 2.2vw, 3.25rem);
@@ -362,12 +337,21 @@
 }
 
 .amazon {
-  padding-left: 1rem;
-  border-left: 2px solid var(--brass);
+  width: 100%;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgb(244 238 226 / 0.18);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.3125rem;
+  line-height: 1.4;
+  font-variation-settings: "opsz" 24;
   color: var(--cream);
 }
 
 .lightLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
   margin-top: 0.5rem;
   color: var(--cream);
   font-size: 0.9375rem;
@@ -380,6 +364,14 @@
 
 .lightLink:hover {
   text-decoration-color: var(--cream);
+}
+
+.linkIcon {
+  transition: transform 0.3s var(--ease);
+}
+
+.lightLink:hover .linkIcon {
+  transform: translateX(3px);
 }
 
 .transparency :focus-visible {
@@ -400,7 +392,6 @@
   .sectionHead {
     grid-template-columns: 1fr;
     grid-template-areas:
-      "eyebrow"
       "title"
       "intro";
   }
@@ -410,8 +401,12 @@
     grid-template-columns: 1fr;
   }
 
+  .approachGrid .sectionTitle {
+    position: static;
+  }
+
   .indexRow {
-    grid-template-columns: 3.5rem minmax(0, 1fr) minmax(0, 1.4fr) 4.5rem;
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.4fr) 4.5rem;
   }
 
   .indexArt {
@@ -424,16 +419,10 @@
   .indexRow {
     grid-template-columns: minmax(0, 1fr) 4.25rem;
     grid-template-areas:
-      "num art"
       "name art"
-      "text text";
+      "text art";
     gap: 0.35rem 1.25rem;
     align-items: start;
-  }
-
-  .indexNum {
-    grid-area: num;
-    font-size: 1rem;
   }
 
   .indexName {
@@ -442,7 +431,6 @@
 
   .indexText {
     grid-area: text;
-    margin-top: 0.5rem;
   }
 
   .indexArt {
@@ -452,11 +440,7 @@
   }
 
   .principle {
-    grid-template-columns: 2.5rem minmax(0, 1fr);
-  }
-
-  .principleText {
-    grid-column: 2;
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 

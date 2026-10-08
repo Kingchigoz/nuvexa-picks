@@ -8,7 +8,12 @@ export const metadata: Metadata = {
   title: "Affiliate Disclosure",
   description: "How Nuvexa Picks uses affiliate links, including the Amazon Associates Program.",
   alternates: { canonical: "/disclosure" },
-  openGraph: { url: "/disclosure", title: "Affiliate Disclosure · Nuvexa Picks" },
+  openGraph: {
+    url: "/disclosure",
+    siteName: "Nuvexa Picks",
+    title: "Affiliate Disclosure · Nuvexa Picks",
+    description: "How Nuvexa Picks uses affiliate links, including the Amazon Associates Program.",
+  },
 };
 
 export default function DisclosurePage() {

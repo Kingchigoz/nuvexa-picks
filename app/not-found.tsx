@@ -3,7 +3,6 @@ import Link from "next/link";
 export default function NotFound() {
   return (
     <section className="container not-found">
-      <p className="eyebrow">Page not found</p>
       <h1>
         This page wasn’t <em>saved.</em>
       </h1>

@@ -9,7 +9,12 @@ export const metadata: Metadata = {
   description:
     "How Nuvexa Picks handles information on its website, through affiliate links and on Pinterest.",
   alternates: { canonical: "/privacy" },
-  openGraph: { url: "/privacy", title: "Privacy Policy · Nuvexa Picks" },
+  openGraph: {
+    url: "/privacy",
+    siteName: "Nuvexa Picks",
+    title: "Privacy Policy · Nuvexa Picks",
+    description: "How Nuvexa Picks handles information on its website, through affiliate links and on Pinterest.",
+  },
 };
 
 const toc = [

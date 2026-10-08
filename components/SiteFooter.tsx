@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Arrow } from "./Arrow";
 import { Wordmark } from "./Logo";
 import { amazonDisclosure, site } from "@/lib/site";
 
@@ -22,7 +23,7 @@ export function SiteFooter() {
               {site.pinterestUrl && (
                 <li>
                   <a href={site.pinterestUrl} target="_blank" rel="noopener noreferrer">
-                    Pinterest<span aria-hidden="true"> ↗</span>
+                    Pinterest <Arrow direction="up-right" className="site-footer__icon" />
                     <span className="visually-hidden"> (opens in a new tab)</span>
                   </a>
                 </li>

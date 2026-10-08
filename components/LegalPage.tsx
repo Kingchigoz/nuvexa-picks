@@ -13,7 +13,6 @@ export function LegalPage({ title, intro, toc, children }: Props) {
   return (
     <article className={styles.page}>
       <header className={`container ${styles.head}`}>
-        <p className="eyebrow">{site.name}</p>
         <h1 className={styles.title}>{title}</h1>
         <p className={styles.meta}>
           Effective <time dateTime={site.legalUpdated}>{date}</time>
