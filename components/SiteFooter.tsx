@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowUpRightIcon } from "@phosphor-icons/react/ssr";
 import { Wordmark } from "./Logo";
+import { categories } from "@/lib/categories";
 import { amazonDisclosure, site } from "@/lib/site";
 
 export function SiteFooter() {
@@ -12,6 +13,15 @@ export function SiteFooter() {
             <Wordmark />
             <p className="site-footer__tagline">{site.tagline}</p>
           </div>
+          <nav aria-label="Categories">
+            <ul className="site-footer__links">
+              {categories.map((c) => (
+                <li key={c.slug}>
+                  <Link href={`/${c.slug}`}>{c.name}</Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
           <nav aria-label="Footer">
             <ul className="site-footer__links">
               <li>

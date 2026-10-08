@@ -1,41 +1,11 @@
 import Link from "next/link";
 import { ArrowDownIcon, ArrowRightIcon, ArrowUpRightIcon } from "@phosphor-icons/react/ssr";
 import { CategoryTile, type CategoryKind } from "@/components/CategoryTile";
+import { ProductGrid } from "@/components/ProductCard";
+import { categories } from "@/lib/categories";
+import { getProducts } from "@/lib/catalog";
 import { amazonDisclosure, commissionDisclosure, site } from "@/lib/site";
 import styles from "./page.module.css";
-
-const categories: { kind: CategoryKind; name: string; text: string }[] = [
-  {
-    kind: "home",
-    name: "Home",
-    text: "Quiet upgrades for the rooms you live in: storage, textiles, lighting and the details that make a space feel finished.",
-  },
-  {
-    kind: "everyday",
-    name: "Everyday Finds",
-    text: "Small, genuinely useful things for the kitchen, the desk and the daily routine.",
-  },
-  {
-    kind: "gifts",
-    name: "Gifts",
-    text: "Thoughtful ideas for birthdays, holidays and the people who are hardest to shop for.",
-  },
-  {
-    kind: "style",
-    name: "Style",
-    text: "Wardrobe pieces and accessories with lasting appeal, rather than a single season.",
-  },
-  {
-    kind: "beauty",
-    name: "Beauty",
-    text: "Self-care and beauty finds chosen as much for the ritual as for the result.",
-  },
-  {
-    kind: "tech",
-    name: "Tech",
-    text: "Clever gadgets and accessories that earn their place on the desk, in the bag or at home.",
-  },
-];
 
 /** The hero "board": three staggered columns of saved pins. */
 const board: { kind: CategoryKind; label: string; shape: string }[][] = [
@@ -69,6 +39,7 @@ const principles = [
 ];
 
 export default function Home() {
+  const recent = getProducts().slice(0, 8);
   return (
     <>
       <section className={styles.hero} aria-labelledby="hero-title">
@@ -78,8 +49,8 @@ export default function Home() {
               Discoveries <em>worth saving.</em>
             </h1>
             <p className={styles.heroLead}>
-              Thoughtfully curated products, useful finds, gifts and everyday inspiration, gathered
-              with care and shared for you to save.
+              Products worth checking out, found and curated with care: useful finds, gifts and
+              everyday inspiration, each with a short note on why we picked it.
             </p>
             <div className={styles.heroActions}>
               {site.pinterestUrl ? (
@@ -100,8 +71,8 @@ export default function Home() {
                 </>
               ) : (
                 <>
-                  <Link className={styles.button} href="#discover">
-                    See what we curate
+                  <Link className={styles.button} href={recent.length ? "#recent" : "#discover"}>
+                    {recent.length ? "See recent picks" : "See what we curate"}
                     <ArrowDownIcon className={styles.buttonIcon} weight="light" aria-hidden="true" />
                   </Link>
                   <Link className={styles.textLink} href="#about">
@@ -131,6 +102,22 @@ export default function Home() {
         </div>
       </section>
 
+      {recent.length > 0 && (
+        <section id="recent" className={styles.section} aria-labelledby="recent-title">
+          <div className="container">
+            <div className={styles.sectionHead}>
+              <h2 id="recent-title" className={styles.sectionTitle}>
+                Recently <em>picked.</em>
+              </h2>
+              <p className={styles.sectionIntro}>
+                The latest things we found worth a closer look, each with a short note on why.
+              </p>
+            </div>
+            <ProductGrid products={recent} />
+          </div>
+        </section>
+      )}
+
       <section id="discover" className={styles.section} aria-labelledby="discover-title">
         <div className="container">
           <div className={styles.sectionHead}>
@@ -145,12 +132,14 @@ export default function Home() {
 
           <ul className={styles.categories} role="list">
             {categories.map((cat) => (
-              <li key={cat.kind} className={styles.category}>
-                <CategoryTile kind={cat.kind} className={styles.categoryTile} />
-                <div>
-                  <h3 className={styles.categoryName}>{cat.name}</h3>
-                  <p className={styles.categoryText}>{cat.text}</p>
-                </div>
+              <li key={cat.slug}>
+                <Link className={styles.category} href={`/${cat.slug}`}>
+                  <CategoryTile kind={cat.kind} className={styles.categoryTile} />
+                  <div>
+                    <h3 className={styles.categoryName}>{cat.name}</h3>
+                    <p className={styles.categoryText}>{cat.text}</p>
+                  </div>
+                </Link>
               </li>
             ))}
           </ul>
@@ -168,7 +157,7 @@ export default function Home() {
             <p className={styles.approachLead}>
               Nuvexa Picks is an independent product-discovery brand. We research products and ideas
               across home, style, beauty, tech and gifting, then share the ones we think are worth a
-              closer look as Pins you can save and come back to.
+              closer look, here and on the platforms where you discover things.
             </p>
             <ul className={styles.principles} role="list">
               {principles.map((p) => (

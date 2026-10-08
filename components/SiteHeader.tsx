@@ -2,9 +2,9 @@ import Link from "next/link";
 import { Wordmark } from "./Logo";
 
 const nav = [
-  { href: "/#discover", label: "Discover" },
+  { href: "/#discover", label: "Categories" },
+  { href: "/gifts", label: "Gifts" },
   { href: "/#about", label: "About" },
-  { href: "/privacy", label: "Privacy" },
 ];
 
 export function SiteHeader() {
